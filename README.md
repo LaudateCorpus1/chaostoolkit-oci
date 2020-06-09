@@ -84,7 +84,7 @@ and the necessary api access pem files.
 ```
 [DEFAULT]
 user=ocid1.user.oc1..aaaaaaaabyneck4zsklp55y4ebgt2gvlwxxxxxz7hskluh3hpshfb3jelsew
-fingerprint=88:c8:92:44:cf:5b:f8:de:f9:b0:cc:cc:da:54:a2:c6
+fingerprint=01:ab:cd:ef:cf:5b:f8:de:f9:b0:cc:cc:da:54:a2:c6
 key_file=/home/user/.oci/oci_api_key.pem
 tenancy=ocid1.tenancy.oc1..aaaaaaaarx3oltzmcws24bsf2mp77h6vbqwieexxxxxx2gohnfjjanmedxqj
 compartment=ocid1.compartment.oc1..aaaaaaaaeaoardsao2cymuokft6crfxxxxxxuan4msovmdai44akwxje7tla

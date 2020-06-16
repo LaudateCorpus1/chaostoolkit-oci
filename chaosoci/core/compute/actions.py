@@ -13,7 +13,7 @@ from logzero import logger
 from oci.config import from_file
 from oci.core import ComputeClient
 
-from .common import (filter_instances, 
+from .common import (filter_instances,
                      get_instances)
 
 __all__ = ["stop_instance", "stop_random_instance"]

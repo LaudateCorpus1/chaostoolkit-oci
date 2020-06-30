@@ -11,9 +11,17 @@ If you are interested to contribute to chaostoolkit-oci, you also need to instal
 pip install -r requirements-dev.txt
 ```
 
+<<<<<<< HEAD
 Your contributions should follow the [OCI Python SDK API model][oci-python-sdk] e.g. 
 
 Compute is under chaosoci > core > compute, VCN is under chaosoci > core > vcn, Mysql should be under chaosoci > mysql and so on.
+=======
+Your contributions should follow the [OCI Python SDK API model][oci-python-sdk] for example:
+
+* Compute is under `chaosoci/core/compute`, 
+* VCN is under `chaosoci/core/vcn`, 
+* MySQL should be under `chaosoci/mysql`, and so on.
+>>>>>>> ad1858340d9346a10f8e67e02e063c22718db9ee
 
 Commits need to be [signed][signing-commits].
 
@@ -31,18 +39,9 @@ To run the tests for the project execute the following:
 pytest
 ```
 
-## Oracle contributors
+## External contributors
 
-If you are an Oracle contributor and you wish to contribute to this project, follow this process:
-
-1. Obtain internal approval so you can contribute to an existing GitHub repo
-2. Request repo write access from Oracle GitHub Organization to the https://github.com/oracle/chaostoolkit-oci fork.
-3. Clone the repo and create an issue branch (e.g. issue-xxx). Write your code and push your branch to the Oracle fork: https://github.com/oracle/chaostoolkit-oci
-4. Raise a pull request from https://github.com/oracle/chaostoolkit-oci/issue-xxx to https://github.com/oracle/chaostoolkit-oci/develop.
-
-## Non-Oracle contributors
-
-If you are not an Oracle contributor and you wish to contribute to this project, follow this process:
+If you wish to contribute to this project, follow this process:
 
 1. Fork this project
 2. Create your issue branch (issue-xxx)
@@ -54,12 +53,10 @@ The Chaos Toolkit projects require all contributors must sign a
 into the master branch of the repository. Please, make sure you can abide by
 the rules of the DCO before submitting a PR.
 
-
-
 ## Tests
 
 To run the tests for the project execute the following:
 
 ```
-$ pytest
+pytest
 ```

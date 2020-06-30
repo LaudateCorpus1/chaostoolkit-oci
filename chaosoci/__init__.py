@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+# Copyright 2020, Oracle Corporation and/or its affiliates.
+
 from typing import List
 
 from oci.config import from_file, validate_config

@@ -1,4 +1,5 @@
 # coding: utf-8
+# Copyright 2020, Oracle Corporation and/or its affiliates.
 
 __all__ = ["filter_route_tables"]
 
@@ -12,7 +13,6 @@ from logzero import logger
 from oci.core import VirtualNetworkClient
 from oci.core.models import (RouteRule,
                              RouteTable)
-
 
 def filter_route_tables(route_tables: List[RouteTable] = None,
                         filters: Dict[str, Any] = None) -> List[RouteTable]:

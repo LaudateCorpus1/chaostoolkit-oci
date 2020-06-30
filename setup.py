@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# Copyright 2020, Oracle Corporation and/or its affiliates.
 """chaostoolkit OCI builder and installer"""
 
 from chaosoci import __version__

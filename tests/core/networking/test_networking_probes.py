@@ -1,4 +1,5 @@
 # coding: utf-8
+# Copyright 2020, Oracle Corporation and/or its affiliates.
 
 import pytest
 
@@ -9,7 +10,6 @@ from chaoslib.exceptions import ActivityFailed
 
 from chaosoci.core.networking.probes import (count_route_tables,
                                              filter_route_tables)
-
 
 @patch('chaosoci.core.networking.probes.filter_route_tables', autospec=True)
 @patch('chaosoci.core.networking.probes.get_route_tables', autospec=True)

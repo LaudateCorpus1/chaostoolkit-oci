@@ -1,4 +1,5 @@
 # coding: utf-8
+# Copyright 2020, Oracle Corporation and/or its affiliates.
 
 __all__ = ['count_route_tables']
 
@@ -17,7 +18,6 @@ from oci.core import VirtualNetworkClient
 from .common import (get_route_tables)
 
 from .filters import (filter_route_tables)
-
 
 def count_route_tables(filters: List[Dict[str, Any]],
                        compartment_id: str = None,

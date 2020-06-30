@@ -1,4 +1,5 @@
 # coding: utf-8
+# Copyright 2020, Oracle Corporation and/or its affiliates.
 
 __all__ = ["delete_route_table_by_id", "delete_route_table_by_filters"]
 
@@ -19,9 +20,7 @@ from oci.core import VirtualNetworkClient
 
 from .common import (get_route_tables)
 
-
 from .filters import (filter_route_tables)
-
 
 def delete_route_table_by_id(rt_id: str, force: bool = False,
                              configuration: Configuration = None,
@@ -42,7 +41,6 @@ def delete_route_table_by_id(rt_id: str, force: bool = False,
     ret = client.delete_route_table(rt_id=rt_id).data
     logger.debug("Route table %s deleted", rt_id)
     return ret
-
 
 def delete_route_table_by_filters(compartment_id: str, vcn_id: str,
                                   filters: Dict[str, Any], force: bool = False,

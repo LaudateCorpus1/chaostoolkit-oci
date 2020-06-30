@@ -3,7 +3,6 @@ from unittest.mock import MagicMock, patch
 
 from chaosoci.core.compute.actions import stop_instance, stop_random_instance
 
-
 @patch('chaosoci.core.compute.actions.oci_client', autospec=True)
 def test_stop_instance(oci_client):
     compute_client = MagicMock()

@@ -1,4 +1,5 @@
 # coding: utf-8
+# Copyright 2020, Oracle Corporation and/or its affiliates.
 
 import pytest
 
@@ -10,7 +11,6 @@ from chaosoci.core.networking.actions import (delete_route_table_by_id,
                                               delete_route_table_by_filters)
 from chaosoci.util.constants import FILTER_ERR
 # FILTER_ERR = 'Some of the chosen filters were not found, we cannot continue.'
-
 
 @patch('chaosoci.core.networking.actions.oci_client', autospec=True)
 def test_delete_route_table_by_id(oci_client):
@@ -26,7 +26,6 @@ def test_delete_route_table_by_id(oci_client):
             with pytest.raises(ActivityFailed) as f:
                 delete_route_table_by_id(id)
             assert 'A route table id is required.'
-
 
 @patch('chaosoci.core.networking.actions.filter_route_tables', autospec=True)
 @patch('chaosoci.core.networking.actions.get_route_tables', autospec=True)

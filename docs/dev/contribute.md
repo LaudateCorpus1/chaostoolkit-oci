@@ -11,17 +11,11 @@ If you are interested to contribute to chaostoolkit-oci, you also need to instal
 pip install -r requirements-dev.txt
 ```
 
-<<<<<<< HEAD
-Your contributions should follow the [OCI Python SDK API model][oci-python-sdk] e.g. 
-
-Compute is under chaosoci > core > compute, VCN is under chaosoci > core > vcn, Mysql should be under chaosoci > mysql and so on.
-=======
 Your contributions should follow the [OCI Python SDK API model][oci-python-sdk] for example:
 
 * Compute is under `chaosoci/core/compute`, 
 * VCN is under `chaosoci/core/vcn`, 
 * MySQL should be under `chaosoci/mysql`, and so on.
->>>>>>> ad1858340d9346a10f8e67e02e063c22718db9ee
 
 Commits need to be [signed][signing-commits].
 

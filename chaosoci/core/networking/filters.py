@@ -14,6 +14,7 @@ from oci.core import VirtualNetworkClient
 from oci.core.models import (RouteRule,
                              RouteTable)
 
+
 def filter_route_tables(route_tables: List[RouteTable] = None,
                         filters: Dict[str, Any] = None) -> List[RouteTable]:
     """

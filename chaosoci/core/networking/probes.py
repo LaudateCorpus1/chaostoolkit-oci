@@ -19,6 +19,7 @@ from .common import (get_route_tables)
 
 from .filters import (filter_route_tables)
 
+
 def count_route_tables(filters: List[Dict[str, Any]],
                        compartment_id: str = None,
                        vcn_id: str = None,

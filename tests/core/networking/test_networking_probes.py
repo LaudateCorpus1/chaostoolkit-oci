@@ -21,7 +21,7 @@ def test_count_route_tables(oci_client, get_route_tables, filter_route_tables):
     c_id = "ocid1.compartment.oc1..oadsocmof6r6ksovxmda44ikwxje7xxu"
     filters = [{'display_name': 'random_name', 'region': 'uk-london-1'}]
 
-    c_ids = [c_id, ""]
+    c_ids = [c_id]
 
     for id in c_ids:
         if id == c_id:

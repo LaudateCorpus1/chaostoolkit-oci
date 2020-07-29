@@ -13,6 +13,7 @@ from oci.core import VirtualNetworkClient
 from oci.core.models import (RouteRule,
                              RouteTable)
 
+
 def get_route_tables(client: VirtualNetworkClient = None,
                      compartment_id: str = None,
                      vcn_id: str = None) -> List[RouteTable]:

@@ -43,6 +43,7 @@ def delete_route_table_by_id(rt_id: str, force: bool = False,
     logger.debug("Route table %s deleted", rt_id)
     return ret
 
+
 def delete_route_table_by_filters(compartment_id: str, vcn_id: str,
                                   filters: Dict[str, Any], force: bool = False,
                                   configuration: Configuration = None,

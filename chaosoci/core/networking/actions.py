@@ -22,6 +22,7 @@ from .common import (get_route_tables)
 
 from .filters import (filter_route_tables)
 
+
 def delete_route_table_by_id(rt_id: str, force: bool = False,
                              configuration: Configuration = None,
                              secrets: Secrets = None) -> OCIResponse:

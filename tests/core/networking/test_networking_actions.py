@@ -7,10 +7,28 @@ from unittest.mock import MagicMock, patch
 
 from chaoslib.exceptions import ActivityFailed
 
-from chaosoci.core.networking.actions import (delete_route_table_by_id,
+from chaosoci.core.networking.actions import (delete_nat_gateway,
+                                              delete_route_table_by_id,
                                               delete_route_table_by_filters)
 from chaosoci.util.constants import FILTER_ERR
 # FILTER_ERR = 'Some of the chosen filters were not found, we cannot continue.'
+
+@patch('chaosoci.core.networking.actions.oci_client', autospec=True)
+def test_delete_nat_gateway(oci_client):
+    network_client = MagicMock()
+    oci_client.return_value = network_client
+    nat_id = "ocid1.natgateway.oc1.phx.aaaaaaaabxh2bsltvplih4pix4ywnrqu3zj6go7sjvg5phsfgyypk3s3znvq"
+    nat_ids = [nat_id, ""]
+
+    for id in nat_ids:
+        if id == nat_id:
+            delete_nat_gateway(id)
+            network_client.delete_nat_gateway.assert_called_with(nat_gateway_id=id)
+        else:
+            with pytest.raises(ActivityFailed) as f:
+                delete_nat_gateway(id)
+            assert 'A NAT gateway id is required.'
+
 
 @patch('chaosoci.core.networking.actions.oci_client', autospec=True)
 def test_delete_route_table_by_id(oci_client):

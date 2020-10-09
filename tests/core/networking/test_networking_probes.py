@@ -8,8 +8,47 @@ from unittest.mock import MagicMock, patch
 
 from chaoslib.exceptions import ActivityFailed
 
-from chaosoci.core.networking.probes import (count_route_tables,
+from chaosoci.core.networking.probes import (count_nat_gateways, 
+                                             filter_nat_gateways,
+                                             count_route_tables,
                                              filter_route_tables)
+
+@patch('chaosoci.core.networking.probes.filter_nat_gateways', autospec=True)
+@patch('chaosoci.core.networking.probes.get_nat_gateways', autospec=True)
+@patch('chaosoci.core.networking.probes.oci_client', autospec=True)
+def test_count_nat_gateways(oci_client, get_nat_gateways, filter_nat_gateways):
+    network_client = MagicMock()
+    oci_client.return_value = network_client
+
+    c_id = "ocid1.compartment.oc1..oadsocmof6r6ksovxmda44ikwxje7xxu"
+    filters = [{'display_name': 'random_name', 'region': 'uk-london-1'}]
+
+    c_ids = [c_id, ""]
+
+    for id in c_ids:
+        if id == c_id:
+            count_nat_gateways(filters=filters, compartment_id=id)
+            filter_nat_gateways.assert_called_with(nats=get_nat_gateways(oci_client,
+                                           id),filters=filters)
+        else:
+            with pytest.raises(ActivityFailed) as f:
+                count_nat_gateways(filters=filters, compartment_id=id)
+            assert 'A valid compartment id is required.'
+
+@patch('chaosoci.core.networking.probes.filter_nat_gateways', autospec=True)
+@patch('chaosoci.core.networking.probes.get_nat_gateways', autospec=True)
+@patch('chaosoci.core.networking.probes.oci_client', autospec=True)
+def test_count_nat_gateways_ret_int(oci_client, get_nat_gateways, filter_nat_gateways):
+    network_client = MagicMock()
+    oci_client.return_value = network_client
+
+    filter_nat_gateways.return_value = ['one', 'two', 'three']
+    c_id = "ocid1.compartment.oc1..oadsocmof6r6ksovxmda44ikwxje7xxu"
+    filters = [{'display_name': 'random_name', 'region': 'uk-london-1'}]
+
+    n = count_nat_gateways(filters=filters, compartment_id=c_id)
+    T().assertEqual(n, 3)
+
 
 @patch('chaosoci.core.networking.probes.filter_route_tables', autospec=True)
 @patch('chaosoci.core.networking.probes.get_route_tables', autospec=True)

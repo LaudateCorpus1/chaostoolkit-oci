@@ -1,7 +1,7 @@
 # coding: utf-8
 # Copyright 2020, Oracle Corporation and/or its affiliates.
 
-__all__ = ["get_route_table", "get_route_tables"]
+__all__ = ["get_nat_gateways", "get_route_table", "get_route_tables"]
 
 from typing import Any, Dict, List
 
@@ -10,8 +10,22 @@ from chaoslib.exceptions import ActivityFailed
 from logzero import logger
 
 from oci.core import VirtualNetworkClient
-from oci.core.models import (RouteRule,
+from oci.core.models import (NatGateway,
+                             RouteRule,
                              RouteTable)
+
+
+def get_nat_gateways(client: VirtualNetworkClient = None,
+                     compartment_id: str = None) -> List[NatGateway]:
+    """Returns a complete, unfiltered list of NAT Gateways in a compartment."""
+    nats = []
+    nats_raw = client.list_nat_gateways(compartment_id=compartment_id)
+    nats.extend(nats_raw.data)
+    while nats_raw.has_next_page:
+        nats_raw = client.list_nat_gateways(compartment_id=compartment_id,
+                                            page=nats_raw.next_page)
+        nats.extend(nats_raw.data)
+    return nats
 
 
 def get_route_tables(client: VirtualNetworkClient = None,

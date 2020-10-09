@@ -1,7 +1,7 @@
 # coding: utf-8
 # Copyright 2020, Oracle Corporation and/or its affiliates.
 
-__all__ = ["delete_route_table_by_id", "delete_route_table_by_filters"]
+__all__ = ["delete_nat_gateway", "delete_route_table_by_id", "delete_route_table_by_filters"]
 
 from random import choice
 from typing import Any, Dict, List
@@ -17,10 +17,33 @@ from logzero import logger
 
 from oci.config import from_file
 from oci.core import VirtualNetworkClient
+from oci.core.models import CreateNatGatewayDetails
 
-from .common import (get_route_tables)
+from .common import (get_nat_gateways,
+                     get_route_tables)
 
-from .filters import (filter_route_tables)
+from .filters import (filter_nat_gateways,
+                      filter_route_tables)
+
+
+def delete_nat_gateway(nat_gateway_id: str, force: bool = False,
+                        configuration: Configuration = None,
+                        secrets: Secrets = None) -> OCIResponse:
+    """
+    Deletes a given NAT Gateway.
+
+    Parameters:
+                Required:
+                    - nat_gateway_id: the id of the NAT gateway
+    """
+    client = oci_client(VirtualNetworkClient, configuration, secrets,
+                        skip_deserialization=True)
+    if not nat_gateway_id:
+        raise ActivityFailed('A NAT gateway id is required.')
+    ret = client.delete_nat_gateway(nat_gateway_id=nat_gateway_id).data
+    logger.debug(ret)
+    logger.debug("NAT Gateway %s deleted", nat_gateway_id)
+    return ret
 
 
 def delete_route_table_by_id(rt_id: str, force: bool = False,

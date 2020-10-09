@@ -1,7 +1,7 @@
 # coding: utf-8
 # Copyright 2020, Oracle Corporation and/or its affiliates.
 
-__all__ = ['count_route_tables']
+__all__ = ["count_nat_gateways", "count_route_tables"]
 
 from typing import Any, Dict, List
 
@@ -15,9 +15,38 @@ from logzero import logger
 from oci.config import from_file
 from oci.core import VirtualNetworkClient
 
-from .common import (get_route_tables)
+from .common import (get_nat_gateways, 
+                     get_route_tables)
 
-from .filters import (filter_route_tables)
+from .filters import (filter_nat_gateways,
+                      filter_route_tables)
+
+
+def count_nat_gateways(filters: List[Dict[str, Any]], compartment_id: str = None,
+                       configuration: Configuration = None,
+                       secrets: Secrets = None) -> int:
+    """
+    Returns the number of NAT Gateways in the compartment 'compartment_id' and according to the given filters.
+
+    Please refer to: https://oracle-cloud-infrastructure-python-sdk.readthedocs.io/en/latest/api/core/models/oci.core.models.NatGateway.html#oci.core.models.NatGateway
+
+    for details on the available filters under the 'parameters' section.
+    """  # noqa: E501
+    compartment_id = compartment_id or from_file().get('compartment')
+
+    if compartment_id is None:
+        raise ActivityFailed('A valid compartment id is required.')
+
+    client = oci_client(VirtualNetworkClient, configuration, secrets,
+                        skip_deserialization=False)
+
+    filters = filters or None
+    nats = get_nat_gateways(client, compartment_id)
+
+    if filters is not None:
+        return len(filter_nat_gateways(nats, filters=filters))
+    else:
+        return len(nats)
 
 
 def count_route_tables(filters: List[Dict[str, Any]],

@@ -1,7 +1,8 @@
 # coding: utf-8
 # Copyright 2020, Oracle Corporation and/or its affiliates.
 
-__all__ = ["delete_nat_gateway", "delete_route_table_by_id", "delete_route_table_by_filters"]
+__all__ = ["delete_nat_gateway", "delete_route_table_by_id", 
+           "delete_route_table_by_filters"]
 
 from random import choice
 from typing import Any, Dict, List
@@ -27,8 +28,8 @@ from .filters import (filter_nat_gateways,
 
 
 def delete_nat_gateway(nat_gateway_id: str, force: bool = False,
-                        configuration: Configuration = None,
-                        secrets: Secrets = None) -> OCIResponse:
+                       configuration: Configuration = None,
+                       secrets: Secrets = None) -> OCIResponse:
     """
     Deletes a given NAT Gateway.
 

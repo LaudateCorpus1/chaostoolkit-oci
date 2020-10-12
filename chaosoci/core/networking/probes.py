@@ -15,7 +15,7 @@ from logzero import logger
 from oci.config import from_file
 from oci.core import VirtualNetworkClient
 
-from .common import (get_nat_gateways, 
+from .common import (get_nat_gateways,
                      get_route_tables)
 
 from .filters import (filter_nat_gateways,

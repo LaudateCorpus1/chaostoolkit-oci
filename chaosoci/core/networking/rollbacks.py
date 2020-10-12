@@ -26,8 +26,8 @@ from .filters import (filter_nat_gateways,
 
 
 def delete_nat_gateway_rollback(compartment_id: str, vcn_id: str, force: bool = False,
-               configuration: Configuration = None,
-               secrets: Secrets = None) -> OCIResponse:
+                                configuration: Configuration = None,
+                                secrets: Secrets = None) -> OCIResponse:
     """
     Recreates a NAT gateway in the given compartment for a VCN.
 
@@ -46,3 +46,4 @@ def delete_nat_gateway_rollback(compartment_id: str, vcn_id: str, force: bool = 
                                                             vcn_id=vcn_id))
     logger.debug(ret.data)
     return ret.data
+    

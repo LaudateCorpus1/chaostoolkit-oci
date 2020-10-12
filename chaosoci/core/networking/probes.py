@@ -22,7 +22,7 @@ from .filters import (filter_nat_gateways,
                       filter_route_tables)
 
 
-def count_nat_gateways(filters: List[Dict[str, Any]], 
+def count_nat_gateways(filters: List[Dict[str, Any]],
                        compartment_id: str = None,
                        configuration: Configuration = None,
                        secrets: Secrets = None) -> int:

@@ -18,14 +18,15 @@ from oci.config import from_file
 from oci.core import VirtualNetworkClient
 from oci.core.models import CreateNatGatewayDetails
 
-from .common import (get_nat_gateways, 
+from .common import (get_nat_gateways,
                      get_route_tables)
 
-from .filters import (filter_nat_gateways, 
+from .filters import (filter_nat_gateways,
                       filter_route_tables)
 
 
-def delete_nat_gateway_rollback(compartment_id: str, vcn_id: str, force: bool = False,
+def delete_nat_gateway_rollback(compartment_id: str, vcn_id: str,
+                                force: bool = False,
                                 configuration: Configuration = None,
                                 secrets: Secrets = None) -> OCIResponse:
     """
@@ -42,7 +43,8 @@ def delete_nat_gateway_rollback(compartment_id: str, vcn_id: str, force: bool = 
     if not compartment_id or not vcn_id:
         raise ActivityFailed('A compartment id or a VCN id is required.')
 
-    ret = client.create_nat_gateway(CreateNatGatewayDetails(compartment_id=compartment_id,
-                                                            vcn_id=vcn_id))
+    ret = client.create_nat_gateway(CreateNatGatewayDetails(
+                                      compartment_id=compartment_id,
+                                      vcn_id=vcn_id))
     logger.debug(ret.data)
     return ret.data

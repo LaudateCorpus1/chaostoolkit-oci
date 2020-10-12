@@ -1,7 +1,7 @@
 # coding: utf-8
 # Copyright 2020, Oracle Corporation and/or its affiliates.
 
-__all__ = ["delete_nat_gateway", "delete_route_table_by_id", 
+__all__ = ["delete_nat_gateway", "delete_route_table_by_id",
            "delete_route_table_by_filters"]
 
 from random import choice

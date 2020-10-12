@@ -46,4 +46,3 @@ def delete_nat_gateway_rollback(compartment_id: str, vcn_id: str, force: bool = 
                                                             vcn_id=vcn_id))
     logger.debug(ret.data)
     return ret.data
-    

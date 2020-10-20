@@ -18,7 +18,7 @@ def test_delete_nat_gateway_rollback(oci_client):
     oci_client.return_value = network_client
 
     c_id = "ocid1.compartment.oc1..oadsocmof6r6ksovxmda44ikwxje7xxu"
-    vcn_id = "ocid1.vcn.oc1.phx.amaaaaaapwxjxiqavc6zohqv4whr6y65qwwjcexhexeje55v5wiarr5n24nq"
+    vcn_id = "ocid1.vcn.oc1.phx.amaaaaaapwxjxiqavc6zohqv4whr6y65qww"
 
     c_ids = [c_id, ""]
     vcn_ids = [vcn_id, ""]
@@ -26,10 +26,11 @@ def test_delete_nat_gateway_rollback(oci_client):
     for c in c_ids:
         for v in vcn_ids:
             if v == vcn_id and c == c_id:
-                with pytest.raises(ServiceError) as s:
+                with pytest.raises(ServiceError):
                     delete_nat_gateway_rollback(compartment_id=c, vcn_id=v)
-                    network_client.create_nat_gateway.assert_called_with(compartment_id=c, vcn_id=v)
+                    network_client.create_nat_gateway.assert_called_with(
+                        compartment_id=c, vcn_id=v)
             else:
-                with pytest.raises(ActivityFailed) as f:
-                    delete_nat_gateway_rollback(c,v)
+                with pytest.raises(ActivityFailed):
+                    delete_nat_gateway_rollback(c, v)
                 assert 'A compartment id or a VCN id is required.'

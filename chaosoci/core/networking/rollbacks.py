@@ -1,7 +1,7 @@
 # coding: utf-8
 # Copyright 2020, Oracle Corporation and/or its affiliates.
 
-__all__ = ["delete_nat_rollback"]
+__all__ = ["delete_nat_gateway_rollback"]
 
 from random import choice
 from typing import Any, Dict, List

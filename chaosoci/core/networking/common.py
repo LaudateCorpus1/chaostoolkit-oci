@@ -1,7 +1,7 @@
 # coding: utf-8
 # Copyright 2020, Oracle Corporation and/or its affiliates.
 
-__all__ = ["get_nat_gateways", "get_route_table", "get_route_tables"]
+__all__ = ["get_nat_gateways", "get_route_tables"]
 
 from typing import Any, Dict, List
 

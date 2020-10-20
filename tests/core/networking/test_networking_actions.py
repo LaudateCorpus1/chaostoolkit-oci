@@ -10,7 +10,6 @@ from chaoslib.exceptions import ActivityFailed
 from chaosoci.core.networking.actions import (delete_route_table_by_id,
                                               delete_route_table_by_filters)
 from chaosoci.util.constants import FILTER_ERR
-# FILTER_ERR = 'Some of the chosen filters were not found, we cannot continue.'
 
 @patch('chaosoci.core.networking.actions.oci_client', autospec=True)
 def test_delete_route_table_by_id(oci_client):

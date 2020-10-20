@@ -5,6 +5,7 @@ import pytest
 
 from unittest.mock import MagicMock, patch
 
+from oci.core.models import CreateNatGatewayDetails
 from oci.exceptions import ServiceError
 
 from chaoslib.exceptions import ActivityFailed
@@ -29,7 +30,10 @@ def test_delete_nat_gateway_rollback(oci_client):
                 with pytest.raises(ServiceError):
                     delete_nat_gateway_rollback(compartment_id=c, vcn_id=v)
                     network_client.create_nat_gateway.assert_called_with(
-                        compartment_id=c, vcn_id=v)
+                        CreateNatGatewayDetails(
+                            compartment_id=c,
+                            vcn_id=v))
+                    # compartment_id=c, vcn_id=v)
             else:
                 with pytest.raises(ActivityFailed):
                     delete_nat_gateway_rollback(c, v)

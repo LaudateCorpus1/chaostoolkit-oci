@@ -24,7 +24,7 @@ def test_count_nat_gateways(oci_client, get_nat_gateways, filter_nat_gateways):
     c_id = "ocid1.compartment.oc1..oadsocmof6r6ksovxmda44ikwxje7xxu"
     filters = [{'display_name': 'random_name', 'region': 'uk-london-1'}]
 
-    c_ids = [c_id, ""]
+    c_ids = [c_id, None]
 
     for id in c_ids:
         if id == c_id:

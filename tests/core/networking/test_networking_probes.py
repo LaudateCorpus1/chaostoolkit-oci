@@ -36,7 +36,7 @@ def test_count_nat_gateways(oci_client, get_nat_gateways, filter_nat_gateways):
             filter_nat_gateways.assert_called_with(
                 nats=get_nat_gateways(oci_client, id), filters=filters
             )
-            T().assertEqual(n, 1)
+            T().assertEqual(n, 0)
 
     # for id in c_ids:
     #     if id == c_id:

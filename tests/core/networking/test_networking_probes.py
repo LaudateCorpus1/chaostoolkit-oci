@@ -32,10 +32,12 @@ def test_count_nat_gateways(oci_client, get_nat_gateways, filter_nat_gateways):
                 count_nat_gateways(filters=filters, compartment_id=id)
             assert 'A valid compartment id is required.'
         else:
-            count_nat_gateways(filters=filters, compartment_id=id)
+            n = count_nat_gateways(filters=filters, compartment_id=id)
             filter_nat_gateways.assert_called_with(
                 nats=get_nat_gateways(oci_client, id), filters=filters
             )
+            T().assertEqual(n, 1)
+
     # for id in c_ids:
     #     if id == c_id:
     #         count_nat_gateways(filters=filters, compartment_id=id)

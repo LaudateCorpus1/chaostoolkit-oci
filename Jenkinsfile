@@ -16,9 +16,6 @@ pipeline {
         stage('Build') {
             steps {
                 sh """
-                    # dummy oci config
-                    touch ~/.oci/config
-
                     # create virtual environment
                     sudo pip-3.6 install virtualenv
                     virtualenv ~/.venvs/chaostk

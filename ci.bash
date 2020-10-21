@@ -13,6 +13,7 @@ function build () {
 
 function run-test () {
     echo "Running the tests"
+    touch $HOME/.oci/config
     python setup.py test
 }
 

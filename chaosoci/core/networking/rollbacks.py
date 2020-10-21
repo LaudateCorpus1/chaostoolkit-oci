@@ -40,7 +40,7 @@ def delete_nat_gateway_rollback(compartment_id: str, vcn_id: str,
     client = oci_client(VirtualNetworkClient, configuration, secrets,
                         skip_deserialization=True)
 
-    if not compartment_id or not vcn_id:
+    if compartment_id is None or vcn_id is None:
         raise ActivityFailed('A compartment id or a VCN id is required.')
 
     ret = client.create_nat_gateway(CreateNatGatewayDetails(
